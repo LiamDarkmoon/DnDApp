@@ -123,10 +123,8 @@ $shadow: #432818
         .under-log::-webkit-scrollbar
             display: none
 
-button
-    border: none
-
 .bttn
+    border: 1px solid #da2d28
     padding: 8px 16px
     border-radius: 4px
     background-color: #da2d28
@@ -186,7 +184,7 @@ button
 
 
 /* Media query for lit mobile */
-@media ( max-width: 320px )
+@media ( max-width: 375px )
 
     body
         padding-top: 56px
@@ -202,15 +200,28 @@ button
             font-size: 14px
 
     .navbar
-        height: 56px
+        height: 60px
         padding: 12px 16px
 
         #logo
             margin-right: 8px
+            height: 30px
+
+        #brand
+            font-size: 16px
+
+        .navbar-toggler
             height: 32px
+            width: 32px
+            padding: 4px
+        
+        .navbar-toggler-icon
+            height: 20px
+            width: 20px
+            
 
     .dicetray
-        height: 80vh
+        height: 100vh
         margin: 16px 0
 
     .cta-bttn

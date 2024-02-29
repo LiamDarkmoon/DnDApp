@@ -6,7 +6,7 @@ import { ROLES } from '../../../models/roles.enum';
 import { Modal } from 'react-bootstrap'
 import Bttn from '../Btn';
 
-const RegisterFormik = () => {
+const RegisterForm = () => {
 
     const [show, setShow] = useState(false)
 
@@ -105,4 +105,4 @@ const RegisterFormik = () => {
     );
 }
 
-export default RegisterFormik;
+export default RegisterForm;
