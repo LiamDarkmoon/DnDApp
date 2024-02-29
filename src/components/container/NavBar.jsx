@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import RegisterFormik from '../pure/forms/RegisterFormik';
 
 
 const NavBar = () => {
@@ -17,7 +16,7 @@ const NavBar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <button className="bttn" type="submit">sign up</button>
+                                <RegisterFormik/>
                             </li>
                             <li className="nav-item">
                                 <button className="secondary-bttn" type="submit">login</button>
@@ -28,12 +27,7 @@ const NavBar = () => {
             </nav>
         </div>
     );
-};
-
-
-NavBar.propTypes = {
-
-};
+}
 
 
 export default NavBar;

@@ -1,10 +1,14 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useState } from 'react';
 import * as Yup from 'yup';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { User } from '../../../models/user.class';
 import { ROLES } from '../../../models/roles.enum';
+import { Modal } from 'react-bootstrap'
+import Bttn from '../Btn';
 
 const RegisterFormik = () => {
+
+    const [show, setShow] = useState(false)
 
     let user = new User();
 
@@ -12,8 +16,8 @@ const RegisterFormik = () => {
         username: '',
         email: '',
         password: '',
-        role: ROLES.USER,
         confirm: '',
+        role: ROLES.USER
     }
 
     const registerSchema = Yup.object().shape(
@@ -25,80 +29,78 @@ const RegisterFormik = () => {
             email: Yup.string()
                 .email('Invalid email please try again')
                 .required('Please enter an email'),
-            role: Yup.string()
-                .oneOf([ROLES.USER, ROLES.ADMIN], 'You mas select a role')
-                .required('Required'),
-            password: Yup.string()
+                password: Yup.string()
                 .required('Please enter a password')
                 .min(8, 'Password is too short')
                 .max(16, 'Max 16 characters'),
-            confirm: Yup.string()
+                confirm: Yup.string()
                 .when('password',  {
                     is: value => (value && value.length > 0 ? true : false),
                     then: () => Yup.string().oneOf(
                         [Yup.ref('password')],
                         '¡Passwords must match!'
-                    ),
-                    otherwise: () => Yup.string().required('Please confirm Password')
-                })
+                        ),
+                        otherwise: () => Yup.string().required('Please confirm Password')
+                    }),
+                role: Yup.string()
+                    .oneOf([ROLES.USER, ROLES.ADMIN], 'You mas select a role')
+                    .required('Required'),
         }
     )
 
-    const submit = (values) => {
-        alert('Register User')
+    const handleShowingBttn = () => {
+        setShow(!show)
     }
 
     return (
         <div>
-            <Formik
-                initialValues = { initialValues }
-                validationSchema = { registerSchema }
-                onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 2000));
-                    alert(JSON.stringify(values, null, 2));
-                    localStorage.setItem('credential', values)
-                }}
-            >
-            {({ values,
-                isSubmitting,
-                handleChange,
-                handleBlur }) => (
-                    <Form className='border rounded m-3 p-4'>
-                        <h1 className='mb-4'>Register Form</h1>
-                        <div className='form-floating my-2'>
-                            <Field className='form-control' id='username' type='text' name='username' placeholder='LiamDarkmoon' />
-                            <label htmlFor='username'>Username</label>
-                            <ErrorMessage className='text-danger' component='div' name='username'/>
-                        </div>
-                        
-                        <div className='form-floating my-2'>
-                            <Field className='form-control' id='email' type='email' name='email' placeholder='LiamDarkmoon@gmail.com' />
-                            <label htmlFor='email'>Email</label>
-                            <ErrorMessage className='text-danger' component='div' name='email'/>
-                        </div>
-
-
-                        <div className='form-floating my-2'>
-                            <Field className='form-control' id='password' type='password' name='password' placeholder='Password Here' />
-                            <label htmlFor='password'>Password</label>
-                            <ErrorMessage className='text-danger' component='div' name='password'/>
-                        </div>
-
-
-                        <div className='form-floating my-2'>
-                            <Field className='form-control' id='confirm' type='password' name='confirm' placeholder='Confirm Password' />
-                            <label htmlFor='confirm'>Confirm Password</label>
-                            <ErrorMessage className='text-danger' component='div' name='confirm'/>
-                        </div>
-
-                        <button className='my-3' type='submit'>Register Account</button>
-                        { isSubmitting ? (<h3>Creating your account</h3>) : null }
-                    </Form>
-                )
-            }
-
-            </Formik>
-            
+            <Bttn click={ handleShowingBttn } text='Sign Up'/>
+            <Modal show={ show } onHide={ handleShowingBttn }>
+                <Formik
+                    initialValues = { initialValues }
+                    validationSchema = { registerSchema }
+                    onSubmit={async (values) => {
+                        await new Promise((r) => setTimeout(r, 2000));
+                        alert(JSON.stringify(values, null, 2));
+                        localStorage.setItem('credential', values);
+                    }}
+                >
+                {({ values,
+                    isSubmitting,
+                    handleChange,
+                    handleBlur }) => (
+                        <Form className='register text-center rounded'>
+                            <h1 className='mb-4'>Sign Up</h1>
+                            <div className='form-floating my-2'>
+                                <Field className='form-control' id='username' type='text' name='username' placeholder='LiamDarkmoon' />
+                                <label htmlFor='username'>Username</label>
+                                <ErrorMessage className='text-danger' component='div' name='username'/>
+                            </div>
+                            <div className='form-floating my-2'>
+                                <Field className='form-control' id='email' type='email' name='email' placeholder='LiamDarkmoon@gmail.com' />
+                                <label htmlFor='email'>Email</label>
+                                <ErrorMessage className='text-danger' component='div' name='email'/>
+                            </div>
+                            <div className='form-floating my-2'>
+                                <Field className='form-control' id='password' type='password' name='password' placeholder='Password Here' />
+                                <label htmlFor='password'>Password</label>
+                                <ErrorMessage className='text-danger' component='div' name='password'/>
+                            </div>
+                            <div className='form-floating my-2'>
+                                <Field className='form-control' id='confirm' type='password' name='confirm' placeholder='Confirm Password' />
+                                <label htmlFor='confirm'>Confirm Password</label>
+                                <ErrorMessage className='text-danger' component='div' name='confirm'/>
+                            </div>
+                            <div className='row justify-content-center m-4 p-0'>
+                                <button className='bttn' type='submit' onClick={ handleShowingBttn }>Register Account</button>
+                                <span className='separator col my-2'></span>
+                                <button className='secondary-bttn'type='button' >Sign up with </button>
+                            </div>
+                        </Form>
+                    )
+                }
+                </Formik>
+            </Modal>
         </div>
     );
 }

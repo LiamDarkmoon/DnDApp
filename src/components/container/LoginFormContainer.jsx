@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import { httpsRequest } from '../../store/actions/asyncActions'
 import LoginForm from '../pure/forms/LoginForm'

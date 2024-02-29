@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 
 const diceOptions = [
     { value: '4', label: 'D4' },
@@ -9,8 +9,6 @@ const diceOptions = [
     { value: '12', label: 'D12' },
     { value: '20', label: 'D20' }
   ]
-
-const img = <D20 faces={20}/>
 
 const DieSelect = ({ change, className }) => {
     return (
