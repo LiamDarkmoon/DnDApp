@@ -34,6 +34,7 @@ $shadow: #432818
     height: 64px
     padding: 12px 56px
     background-color: $secondary-accent
+    border-bottom: 3px double $shadow
 
     #brand
         font-family: "Noto Serif", serif
@@ -60,7 +61,7 @@ $shadow: #432818
     align-items: center
     height: 90vh
     background: #ffefc6c0
-    border: 3px double $shadow
+    border: 5px double $shadow
     border-radius: 20px
 
     .tray-ttl
@@ -84,12 +85,20 @@ $shadow: #432818
             font-size:1.5em
             font-weight: 500
 
-        input[type='number'], select
+        input[type='number'], .dice-select, .dice-menu
             text-align: center
             border: 1px solid $shadow
 
-        select
-            appearance: none
+        .dice-select, .dice-option
+            background-color: #ffff
+
+        .dice-option:hover
+            background-color: $primary-color
+            color: $secondary-accent
+
+            .nn
+                display: none
+
 
         .l
             border-top-left-radius: 4px

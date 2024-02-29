@@ -32,6 +32,7 @@
   height: 64px;
   padding: 12px 56px;
   background-color: #ffefc6;
+  border-bottom: 3px double #432818;
 }
 .navbar #brand {
   font-family: "Noto Serif", serif;
@@ -59,7 +60,7 @@
   align-items: center;
   height: 90vh;
   background: rgba(255, 239, 198, 0.7529411765);
-  border: 3px double #432818;
+  border: 5px double #432818;
   border-radius: 20px;
 }
 .dicetray .tray-ttl {
@@ -81,14 +82,19 @@
   font-size: 1.5em;
   font-weight: 500;
 }
-.dicetray .die input[type=number], .dicetray .die select {
+.dicetray .die input[type=number], .dicetray .die .dice-select, .dicetray .die .dice-menu {
   text-align: center;
   border: 1px solid #432818;
 }
-.dicetray .die select {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+.dicetray .die .dice-select, .dicetray .die .dice-option {
+  background-color: white;
+}
+.dicetray .die .dice-option:hover {
+  background-color: #b7221e;
+  color: #ffefc6;
+}
+.dicetray .die .dice-option:hover .nn {
+  display: none;
 }
 .dicetray .die .l {
   border-top-left-radius: 4px;

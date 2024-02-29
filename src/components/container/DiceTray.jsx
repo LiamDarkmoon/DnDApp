@@ -30,9 +30,10 @@ export const DiceTray = () => {
 
     // inputHandler functions //
     const chooseDie = (e) => {
-        setDie(Number(e.target.value));
+        setDie(Number(e.value));
         setRoll([1]);
         setDieNumber(1);
+        console.log(e.value)
     };
 
     const chooseMod = (e) => {
