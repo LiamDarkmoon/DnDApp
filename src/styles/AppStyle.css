@@ -10,7 +10,6 @@
 }
 
 .pg {
-  height: 100vh;
   width: 100%;
   padding: 0 100px;
 }
@@ -60,10 +59,11 @@
   align-items: center;
   height: 90vh;
   background: rgba(255, 239, 198, 0.7529411765);
+  border: 3px double #432818;
   border-radius: 20px;
 }
 .dicetray .tray-ttl {
-  border-top: 3px double #b7221e;
+  font-family: "Noto Serif", serif;
   border-bottom: 3px double #b7221e;
 }
 .dicetray .die .upper-log {
@@ -186,6 +186,9 @@ button {
 
 /* Media query for lit mobile */
 @media (max-width: 320px) {
+  body {
+    padding-top: 56px;
+  }
   .pg {
     padding: 0 25px;
   }
@@ -205,6 +208,7 @@ button {
   }
   .dicetray {
     height: 80vh;
+    margin: 16px 0;
   }
   .cta-bttn {
     height: 40px;

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { randomDieFace } from '../../models/logics';
-import Modal from 'react-bootstrap/Modal';
 import DiceCounter from '../pure/DieCounter';
 import { D20 }  from '../pure/Dice';
 
@@ -8,7 +7,6 @@ import { D20 }  from '../pure/Dice';
 export const DiceTray = () => {
 
     // State //
-    const [show, setShow] = useState(false)
     const [dieNumber, setDieNumber] = useState(1);
     const [die, setDie] = useState(20);
     const [roll, setRoll] = useState([1]);
@@ -55,34 +53,28 @@ export const DiceTray = () => {
         
     };
 
-    // Show DiceTray //
-    const showM = () => setShow(true);
-    const closeM = () => setShow(false);
     
   return (
-    <div className='col'>
-        <button className='bttn cta-bttn' onClick={ showM }>
-            Try the DiceTray
-        </button>
-        <Modal show={ show } centered onHide={ closeM } contentClassName='dicetray'>
-            <div className='col dicetray text-center py-3'>
-                <h2 className="tray-ttl fw-bold col-sm-5 col-9"> Dice tray: <D20 className='col-sm-3 col-2 my-2' faces={ lastResult <= 30 ? lastResult : 30 }/></h2>
-                <DiceCounter 
-                    diceNumber={ dieNumber } 
-                    die={ die } 
-                    roll={ roll }
-                    last={ last }
-                    mod={ mod }
-                    result={ lastResult }
-                    diceRoll={ rollDice }
-                    clear={ clearTray } 
-                    chooseMod={ chooseMod } 
-                    chooseDie={ chooseDie } 
-                    chooseDNumber={ chooseDNumber }
-                    />
-            </div>
-        </Modal>
+
+    <div className='col-12 col-sm-6 dicetray text-center py-3'>
+        <h2 className="tray-ttl col-sm-10 col-9"> Dice tray: 
+            <D20 className='col-sm-1 col-2 m-2' faces={ lastResult <= 30 ? lastResult : 30 }/>
+        </h2>
+        <DiceCounter 
+            diceNumber={ dieNumber } 
+            die={ die } 
+            roll={ roll }
+            last={ last }
+            mod={ mod }
+            result={ lastResult }
+            diceRoll={ rollDice }
+            clear={ clearTray } 
+            chooseMod={ chooseMod } 
+            chooseDie={ chooseDie } 
+            chooseDNumber={ chooseDNumber }
+            />
     </div>
+
   )
 }
 

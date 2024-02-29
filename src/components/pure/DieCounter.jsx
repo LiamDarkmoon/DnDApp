@@ -41,7 +41,7 @@ const DiceCounter = ( { die, diceNumber, mod, roll, last, result, clear, diceRol
                     </select>
                     <input className='r col-4' type='number' ref={ cMod } defaultValue={ 0 } onChange={ chooseMod }/>
                 </div>
-                <div className='col-sm-6 col-8 row ms-2 my-1 p-0'>
+                <div className='col-sm-6 col-10 row ms-2 my-1 p-0'>
                     <Btn type="submit" click={ diceRoll } text='Roll'/>
                     <button className='col-5 secondary-bttn mx-1' type="submit" onClick={() => { clearI(); clear();}}> Clear </button>
                 </div>
@@ -49,7 +49,7 @@ const DiceCounter = ( { die, diceNumber, mod, roll, last, result, clear, diceRol
 
             <div className='under-log col-12'>
                 <h5> Result: </h5>
-                <div className='row justify-content-center px-3'>{ roll.length > 0 ? roll.map((r, i) => <Die key={i} className='col-3 col-sm-2 d-border' die={ die } faces={ r } />) : <p>¡wep!</p> }</div>
+                <div className='row justify-content-center px-3'>{ roll.length > 0 ? roll.map((r, i) => <Die key={i} className='col-3 col-sm-2 d-border' die={ die } faces={ r } fillcolor='withe'/>) : <p>¡wep!</p> }</div>
             </div>
 
         </div>
