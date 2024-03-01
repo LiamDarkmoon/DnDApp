@@ -81,9 +81,9 @@ const LoginForm = () => {
                         <div className='row justify-content-center m-4 p-0'>
                             <button className='bttn' type='submit' >Login</button>
                             <span className='separator col my-2'></span>
-                            <button className='secondary-bttn'type='button' > <Google/> Sign up with  Google</button>
-                            <button className='secondary-bttn my-1'type='button' > <Facebook/> Sign up with Facebook</button>
-                            <button className='secondary-bttn'type='button' > <Twitter/> Sign up with Twitter</button>
+                            <button className='secondary-bttn'type='button' > <Google/> Sign in with  Google</button>
+                            <button className='secondary-bttn my-1'type='button' > <Facebook/> Sign in with Facebook</button>
+                            <button className='secondary-bttn'type='button' > <Twitter/> Sign in with Twitter</button>
                         </div>
                         </Form>
                     )}

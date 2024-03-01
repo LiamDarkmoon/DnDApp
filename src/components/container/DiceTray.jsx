@@ -37,11 +37,11 @@ export const DiceTray = () => {
     };
 
     const chooseMod = (e) => {
-        setMod(Number(e.target.value));
+        if (e.target.value <= 99) setMod(Number(e.target.value));
     };
 
     const chooseDNumber = (e) => {
-        setDieNumber(Number(e.target.value));
+        if (e.target.value <= 50) setDieNumber(Number(e.target.value));
     };
 
 
