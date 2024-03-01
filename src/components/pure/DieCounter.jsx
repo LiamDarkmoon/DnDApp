@@ -41,7 +41,7 @@ const DiceCounter = ( { die, diceNumber, mod, roll, clear, diceRoll, chooseMod, 
         <div className='die col-10 d-flex flex-column align-items-center'>
             <div className='upper-log col-12'>
                 <h5>{ diceNumber === 1 ? "Your Roll" : "Last Roll" } </h5>
-                <h3>{ diceNumber }D{ die }: { roll[roll.length -1] } + { mod } = { lastRoll[lastRoll.length -1] } </h3>
+                <h3>{ diceNumber }D{ Number(die) }: { Number(roll[roll.length -1]) } + { Number(mod) } = { lastRoll[lastRoll.length -1] } </h3>
             </div>  
             <div className='col-12 row justify-content-evenly'>
                 <div className='col-sm-6 col-10 row ms-1 my-1 p-0'>
