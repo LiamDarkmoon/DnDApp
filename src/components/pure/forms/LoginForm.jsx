@@ -40,11 +40,11 @@ const LoginForm = () => {
                 }
             })
             .catch((error) => {
-                alert('Ups i did it again' + error)
+                alert('Ups we are under atack' + error)
                 sessionStorage.removeItem('token')
             })
             .finally(() => {
-                alert('You are being redirected to home')
+                alert('Go home Bobo')
             })
     }
 
