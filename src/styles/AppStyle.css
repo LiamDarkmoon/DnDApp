@@ -203,7 +203,7 @@
 }
 
 /* Media query for lit mobile */
-@media (max-width: 320px) {
+@media (max-width: 720px) {
   body {
     padding-top: 56px;
   }
