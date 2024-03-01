@@ -55,7 +55,7 @@ const RegisterForm = () => {
     }
 
     return (
-        <div>
+        <div className='bttn-conteiner'>
             <Bttn click={ handleShowingBttn } text='Sign Up'/>
             <Modal show={ show } onHide={ handleShowingBttn }>
                 <Formik

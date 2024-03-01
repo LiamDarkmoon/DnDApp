@@ -15,11 +15,11 @@ const NavBar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <LoginForm/>
+                        <ul className="menu navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li className="nav-item bttn-container">
+                                <LoginForm/>    
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item bttn-container">
                                 <RegisterForm/>
                             </li>
                         </ul>

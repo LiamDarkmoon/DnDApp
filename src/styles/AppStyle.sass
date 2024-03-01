@@ -43,9 +43,16 @@ $shadow: #432818
     #logo
         margin-right: 12px
         height: 40px
+
     
-    button
-        margin-left: 12px
+    .menu
+        margin-top: 8px
+        background-color: $secondary-accent
+
+        .bttn-container
+            margin-left: 12px
+
+            
 
 
 .form
@@ -64,7 +71,7 @@ $shadow: #432818
     align-items: center
     height: 90vh
     background: #ffefc6c0
-    border: 5px double $shadow
+    border: 5px double $primary-color
     border-radius: 20px
 
     .tray-ttl
@@ -217,6 +224,20 @@ $shadow: #432818
 
         #brand
             font-size: 16px
+
+        .menu
+            position: absolute
+            right: 0
+            left: 0
+            display: flex
+            flex-flow: row
+            flex-wrap: nowrap
+            justify-content: space-evenly 
+            padding: 8px 16px
+
+            .bttn-container
+                margin: 4px 0 4px 0
+
 
         .navbar-toggler
             height: 32px
