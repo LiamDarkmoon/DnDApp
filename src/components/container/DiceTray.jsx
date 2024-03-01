@@ -41,7 +41,7 @@ export const DiceTray = () => {
     };
 
     const chooseDNumber = (e) => {
-        if (e.target.value <= 50) setDieNumber(Number(e.target.value));
+        if (e.target.value <= 50 && e.target.value >= 1) setDieNumber(Number(e.target.value));
     };
 
 
