@@ -92,7 +92,7 @@ const RegisterForm = () => {
                                 <ErrorMessage className='text-danger' component='div' name='confirm'/>
                             </div>
                             <div className='row justify-content-center m-4 p-0'>
-                                <button className='bttn' type='submit' onClick={ handleShowingBttn }>Register Account</button>
+                                <button className='bttn' type='submit' >Register Account</button>
                                 <span className='separator col my-2'></span>
                                 <button className='secondary-bttn'type='button' >Sign up with </button>
                             </div>

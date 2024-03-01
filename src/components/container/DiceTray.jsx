@@ -59,15 +59,13 @@ export const DiceTray = () => {
 
     <div className='col col-sm-6 dicetray text-center py-3'>
         <h2 className="tray-ttl col-sm-10 col-9"> Dice tray: 
-            <D20 className='col-sm-1 col-2 m-2' faces={ lastResult <= 30 ? lastResult : 30 }/>
+                <D20 className='col-sm-1 col-2 m-2' faces={ lastResult <= 30 ? lastResult : 30 }/>
         </h2>
         <DiceCounter 
             diceNumber={ dieNumber } 
             die={ die } 
             roll={ roll }
-            last={ last }
             mod={ mod }
-            result={ lastResult }
             diceRoll={ rollDice }
             clear={ clearTray } 
             chooseMod={ chooseMod } 
