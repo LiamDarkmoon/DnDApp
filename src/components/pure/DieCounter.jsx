@@ -55,9 +55,11 @@ const DiceCounter = ( { die, diceNumber, mod, roll, clear, diceRoll, chooseMod, 
                 </div>
             </div>
             <div className='under-log col-12'>
-                <h5> Result: </h5>
-                <p>{ lastRoll }</p>
-                <div className='row justify-content-center px-3'>{ roll.length > 0 ? roll.map((r, i) => <Die key={i} className='col-3 col-sm-2 d-border' die={ die } faces={ die === 20 || r === roll[roll.length -1] && lastRoll[i] <= die ? lastRoll[i] : r } fillcolor='withe'/>) : <p>¡wep!</p> }</div>
+                <h5> { diceNumber !== 1 ? 'Results:' : 'Result:' } </h5>
+                <div className='col-12'>
+                    {die !== 20 && mod !== 0 ? lastRoll.map((result, i) =>  <span className='mb-2 fw-bold m-log' key={i}> { result } </span> ) : null}
+                </div>
+                <div className='row justify-content-center px-3'>{ roll.length > 0 ? roll.map((r, i) => <Die key={i} className='col-3 col-sm-2 d-border' die={ die } faces={ die === 20 || r === roll[roll.length -1] ? lastRoll[i] : r } fillcolor='withe'/>) : <p>¡wep!</p> }</div>
             </div>
         </div>
     );

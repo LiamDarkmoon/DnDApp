@@ -5,6 +5,8 @@ import { User } from '../../../models/user.class';
 import { ROLES } from '../../../models/roles.enum';
 import { Modal } from 'react-bootstrap'
 import Bttn from '../Btn';
+import { Facebook, Google, Twitter } from '@mui/icons-material';
+
 
 const RegisterForm = () => {
 
@@ -69,7 +71,7 @@ const RegisterForm = () => {
                     isSubmitting,
                     handleChange,
                     handleBlur }) => (
-                        <Form className='register text-center rounded'>
+                        <Form className='form text-center rounded'>
                             <h1 className='mb-4'>Sign Up</h1>
                             <div className='form-floating my-2'>
                                 <Field className='form-control' id='username' type='text' name='username' placeholder='LiamDarkmoon' />
@@ -94,7 +96,9 @@ const RegisterForm = () => {
                             <div className='row justify-content-center m-4 p-0'>
                                 <button className='bttn' type='submit' >Register Account</button>
                                 <span className='separator col my-2'></span>
-                                <button className='secondary-bttn'type='button' >Sign up with </button>
+                                <button className='secondary-bttn'type='button' > <Google/> Sign up with  Google</button>
+                                <button className='secondary-bttn my-1'type='button' > <Facebook/> Sign up with Facebook</button>
+                                <button className='secondary-bttn'type='button' > <Twitter/> Sign up with Twitter</button>
                             </div>
                         </Form>
                     )

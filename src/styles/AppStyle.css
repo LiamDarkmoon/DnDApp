@@ -46,7 +46,7 @@
   margin-left: 12px;
 }
 
-.register {
+.form {
   background-color: #ffefc6;
   padding: 48px 32px;
 }
@@ -115,6 +115,14 @@
   padding: 16px;
   height: 30vh;
   overflow: auto;
+}
+.dicetray .die .under-log .m-log {
+  display: inline-block;
+  aspect-ratio: 1/1;
+  text-align: center;
+  border: 1px solid #432818;
+  width: 30px;
+  padding: 4px;
 }
 .dicetray .die .under-log::-webkit-scrollbar {
   display: none;

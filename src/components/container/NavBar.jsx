@@ -1,3 +1,4 @@
+import LoginForm from '../pure/forms/LoginForm';
 import RegisterForm from '../pure/forms/RegisterForm';
 
 
@@ -16,10 +17,10 @@ const NavBar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <RegisterForm/>
+                                <LoginForm/>
                             </li>
                             <li className="nav-item">
-                                <button className="secondary-bttn" type="submit">login</button>
+                                <RegisterForm/>
                             </li>
                         </ul>
                     </div>
