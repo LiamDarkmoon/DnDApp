@@ -11,6 +11,7 @@ import { Facebook, Google, Twitter } from '@mui/icons-material';
 const RegisterForm = () => {
 
     const [show, setShow] = useState(false)
+    const [hover, setHover] = useState(false)
 
     let user = new User();
 
@@ -54,10 +55,14 @@ const RegisterForm = () => {
         setShow(!show)
     }
 
+    const handleHover = () => {
+        setHover(!hover)
+    }
+
     return (
         <div className='bttn-conteiner'>
             <Bttn click={ handleShowingBttn } text='Sign Up'/>
-            <Modal show={ show } onHide={ handleShowingBttn }>
+            <Modal show={ show } onHide={() =>  { handleShowingBttn(); handleHover(); } }>
                 <Formik
                     initialValues = { initialValues }
                     validationSchema = { registerSchema }
@@ -96,9 +101,19 @@ const RegisterForm = () => {
                             <div className='row justify-content-center m-4 p-0'>
                                 <button className='bttn' type='submit' >Register Account</button>
                                 <span className='separator col my-2'></span>
-                                <button className='secondary-bttn'type='button' > <Google/> Sign up with  Google</button>
-                                <button className='secondary-bttn my-1'type='button' > <Facebook/> Sign up with Facebook</button>
-                                <button className='secondary-bttn'type='button' > <Twitter/> Sign up with Twitter</button>
+                                <button className='secondary-bttn mb-1'type='button' onMouseOver={ handleHover }  > Sign up with </button>    
+                                {
+                                    hover ?
+                                    <>
+                                        <button className='secondary-bttn'type='button' > <Google/> Sign up with  Google</button>
+                                        <button className='secondary-bttn my-1'type='button' > <Facebook/> Sign up with Facebook</button>
+                                        <button className='secondary-bttn'type='button' > <Twitter/> Sign up with Twitter</button>
+                                    </>
+
+                                    :
+
+                                    null
+                                }
                             </div>
                         </Form>
                     )

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
 
-const Bttn = ({ className, click, text }) => {
+const Bttn = ({ className, click, clean, text }) => {
     return (
-        <button className={ className + ' bttn' } type="submit" onClick={ click }> { text } </button>
+        <button className={ className + ' bttn' } type="submit" onClick={ click } onBlur={ clean }> { text } </button>
     );
 };
 
@@ -11,6 +11,7 @@ const Bttn = ({ className, click, text }) => {
 Bttn.propTypes = {
     click: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired,
+    clean: PropTypes.func,
     className: PropTypes.string,
 
 };

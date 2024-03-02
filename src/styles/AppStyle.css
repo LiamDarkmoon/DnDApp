@@ -18,6 +18,9 @@
   background-color: rgba(255, 239, 198, 0.3764705882);
 }
 .lnd .lnd-hl {
+  margin: 24px 0;
+}
+.lnd .lnd-hl .lnd-hl-tittle {
   font-family: "Noto Serif", serif;
   font-weight: 600;
   font-variation-settings: "wdth" 100;
@@ -80,9 +83,18 @@
   border-radius: 12px;
   margin: 8px 0;
   padding: 8px 16px;
+  height: 15vh;
+  overflow: auto;
+  scroll-behavior: smooth;
 }
-.dicetray .die .upper-log h3, .dicetray .die .upper-log h5 {
-  margin: 0;
+.dicetray .die .upper-log .log-result {
+  animation: 4s ease infinite slide;
+}
+.dicetray .die .upper-log::-webkit-scrollbar {
+  display: none;
+}
+.dicetray .die .upper-log:hover .log-result {
+  animation: none;
 }
 .dicetray .die .d-border {
   aspect-ratio: 1/1;
@@ -168,18 +180,10 @@
   color: white;
 }
 
-.rot-d:hover {
-  animation: 1.5s ease-out alternate rotate;
+.rot-d {
+  animation: 1.5s ease rotate;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 #map {
   background: url("../assets/maps/Map.jpg") center no-repeat;
 }
@@ -202,6 +206,48 @@
   border: 1px solid #ce793c;
 }
 
+/* Animation Keyframes */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes throw {
+  0% {
+    transform: translateZ(0);
+  }
+  100% {
+    transform: translateZ(-30px);
+  }
+}
+@keyframes bounce {
+  0% {
+    transform: translateX(-50px);
+  }
+  25% {
+    transform: translateY(-50px);
+  }
+  75% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateX(50px);
+  }
+}
+@keyframes slide {
+  70% {
+    transform: translateY(0%);
+  }
+  80% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 /* Media query for lit mobile */
 @media (max-width: 720px) {
   body {
@@ -209,6 +255,9 @@
   }
   .pg {
     padding: 0 20px;
+  }
+  .pg .lnd-pg-content {
+    flex-direction: column;
   }
   .navbar {
     height: 64px;
@@ -244,11 +293,13 @@
     width: 20px;
   }
   .dicetray {
-    height: 90vh;
-    margin: 32px 0;
+    padding: 0;
+  }
+  .dicetray .tray-ttl {
+    margin: 16px 0 0 0;
   }
   .cta-bttn {
-    height: 40px;
+    margin: 32px 0;
     padding: 8px 24px;
   }
 }/*# sourceMappingURL=AppStyle.css.map */

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Die from './Die';
 import Bttn from './Btn';
@@ -7,28 +7,47 @@ import DieSelect from './DieSelect';
 
 const DiceCounter = ( { die, diceNumber, mod, roll, clear, diceRoll, chooseMod, chooseDie, chooseDNumber } ) => {
 
+    const [rolling, setRolling] = useState(false)
+
     const qnt = useRef(null);
     const cMod = useRef(null);
+    const rollbttn = useRef(null);
+
+    const rolled = () => {
+        setRolling(false)
+    }
 
     const handleClearButton = () => {
         clear()
+        setRolling(false)
         qnt.current.value = 1;
         cMod.current.value = 0;
     }
-
+    
+    const handleRollButton = () => {
+        setRolling(true)
+        diceRoll()
+        rollbttn.focus
+    }
+    
 
     //suming the result of the last roll
     const lastRoll = []
-    roll.forEach((e) => {
-        if (e + mod >= 1 && e + mod <= die && die !== 20) {
-            lastRoll.push(e + mod)
-        } else if (die === 20 && e + mod >= 1 && e + mod <= 30) {
-            lastRoll.push(e + mod)
-        } else if (e + mod >= 1 && e + mod > die && die !== 20) {
+    roll.forEach((item) => {
+        if (item + mod >= 1 && item + mod <= die && die !== 20) {
+            lastRoll.push(item + mod)
+        } else if (die === 20 && item + mod >= 1 && item + mod <= 30) {
+            lastRoll.push(item + mod)
+        } else if (item + mod >= 1 && item + mod > die && die !== 20) {
             lastRoll.push(die)
-        } else if (die === 20 && e + mod > 30) {
+        } else if (die === 20 && item + mod > 30) {
             lastRoll.push(30)
         } else lastRoll.push(1)
+    })
+
+    let result = 0;
+    lastRoll.forEach((item) => {
+        result = result + item
     })
 
 
@@ -38,28 +57,37 @@ const DiceCounter = ( { die, diceNumber, mod, roll, clear, diceRoll, chooseMod, 
     } */
 
     return (
-        <div className='die col-10 d-flex flex-column align-items-center'>
-            <div className='upper-log col-12'>
-                <h5>{ diceNumber === 1 ? "Your Roll" : "Last Roll" } </h5>
-                <h3>{ diceNumber }D{ Number(die) }: { Number(roll[roll.length -1]) } + { Number(mod) } = { lastRoll[lastRoll.length -1] } </h3>
-            </div>  
-            <div className='col-12 row justify-content-evenly'>
-                <div className='col-sm-6 col-10 row ms-1 my-1 p-0'>
-                    <input className='l col-4' type='number' ref={ qnt } defaultValue={ 1 } min={ 1 } onChange={ chooseDNumber }/>
-                    <DieSelect className='col-4 p-0' change={ chooseDie} />
-                    <input className='r col-4' type='number' ref={ cMod } defaultValue={ 0 } onChange={ chooseMod }/>
+        <div className='die col-10 d-flex flex-column align-items-center' >
+            {
+                diceNumber > 1 ?
+                <div className='upper-log col-12'>
+                    <div className='log-result'>
+                        <h5 className='mt-1 mb-0'> Your Rolls: </h5>
+                        <h3 className='total mt-2'>{ diceNumber }D{ Number(die) }: { Number(roll[roll.length -1]) } + { Number(mod) } = { result } </h3>
+                        { roll.map((roll, i) => <h3 key={ i }> D{ Number(die) }: { Number(roll) } + { Number(mod) } = { Number(lastRoll[i]) } </h3>) }
+                    </div>
                 </div>
-                <div className='col-sm-6 col-10 row ms-2 my-1 p-0'>
-                    <Bttn className='col-5 mx-1' type="submit" click={ diceRoll } text='Roll'/>
+
+                :
+
+                <div className='upper-log col-12'>
+                    <h5 className='m-1 mb-0'> Your Roll: </h5>
+                    <h3 className='total mt-2'>{ diceNumber }D{ Number(die) }: { Number(roll[roll.length -1]) } + { Number(mod) } = { result } </h3>
+                </div>
+            } 
+            <div className='col-12 row justify-content-evenly'>
+                <div className='col-sm-6 col-12 row ms-sm-1 my-1 p-0'>
+                    <input className='l col-4' type='number' ref={ qnt } defaultValue={ 1 } min={ 1 } max={ 50 } onChange={ chooseDNumber }/>
+                    <DieSelect className='col-4 p-0' change={ chooseDie} />
+                    <input className='r col-4' type='number' ref={ cMod } defaultValue={ 0 } min={ -99 } max={ 99 } onChange={ chooseMod }/>
+                </div>
+                <div className='col-sm-6 col-10 row justify-content-evenly ms-sm-2 my-1 p-0'>
+                    <Bttn className='col-5 mx-1' type="submit" click={ handleRollButton } clean={ rolled } text='Roll'/>
                     <button className='col-5 mx-1 secondary-bttn' type="submit" onClick={ handleClearButton }> Clear </button>
                 </div>
             </div>
             <div className='under-log col-12'>
-                <h5> { diceNumber !== 1 ? 'Results:' : 'Result:' } </h5>
-                <div className='col-12'>
-                    {die !== 20 && mod !== 0 ? lastRoll.map((result, i) =>  <span className='mb-2 fw-bold m-log' key={i}> { result } </span> ) : null}
-                </div>
-                <div className='row justify-content-center px-3'>{ roll.length > 0 ? roll.map((r, i) => <Die key={i} className='col-3 col-sm-2 d-border' die={ die } faces={ die === 20 || r === roll[roll.length -1] ? lastRoll[i] : r } fillcolor='withe'/>) : <p>¡wep!</p> }</div>
+                <div className='row h-100 align-items-center justify-content-center px-3'>{ roll.length > 0 ? roll.map((r, i) => <Die key={i} className='col-3 col-sm-2 d-border' die={ die } faces={ die === 20 || r === roll[roll.length -1] ? lastRoll[i] : r } rolling={ rolling }/>) : <p>¡wep!</p> }</div>
             </div>
         </div>
     );

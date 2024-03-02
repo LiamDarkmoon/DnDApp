@@ -22,9 +22,12 @@ $shadow: #432818
     background-color: #ffefc660
 
     .lnd-hl
-        font-family: "Noto Serif", serif
-        font-weight: 600
-        font-variation-settings: "wdth" 100
+        margin: 24px 0
+
+        .lnd-hl-tittle
+            font-family: "Noto Serif", serif
+            font-weight: 600
+            font-variation-settings: "wdth" 100
 
 .separator
     border: 3px double $primary-color
@@ -85,9 +88,21 @@ $shadow: #432818
             border-radius: 12px
             margin: 8px 0
             padding: 8px 16px
+            height: 15vh
+            overflow: auto
+            scroll-behavior: smooth 
 
-            h3, h5
-                margin: 0
+            .log-result
+                animation: 4s ease infinite slide
+
+
+        .upper-log::-webkit-scrollbar
+            display: none
+
+        .upper-log:hover
+
+            .log-result
+                animation: none
 
         .d-border
             aspect-ratio: 1/1
@@ -170,14 +185,9 @@ $shadow: #432818
     
 
 
-.rot-d:hover
-    animation: 1.5s ease-out alternate rotate
+.rot-d
+    animation: 1.5s ease rotate
     
-@keyframes rotate
-  0%
-    transform: rotate(0deg)
-  100%
-    transform: rotate(360deg)
 
 #map
     background: url('../assets/maps/Map.jpg') center no-repeat
@@ -198,6 +208,38 @@ $shadow: #432818
     border: 1px solid $secondary-color
 
 
+/* Animation Keyframes */
+@keyframes rotate
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+@keyframes throw
+  0%
+    transform: translateZ(0)
+  100%
+    transform: translateZ(-30px)
+
+@keyframes bounce
+  0%
+    transform: translateX(-50px)
+  25%
+    transform: translateY(-50px)
+  75%
+    transform: translateY(50px)
+  100%
+    transform: translateX(50px)
+
+
+@keyframes slide
+  70%
+    transform: translateY(0%)
+  80%
+    transform: translateY(-30px)
+  100%
+    transform: translateY(0)
+
 /* Media query for lit mobile */
 @media ( max-width: 720px )
 
@@ -206,6 +248,10 @@ $shadow: #432818
     
     .pg
         padding: 0 20px
+
+        .lnd-pg-content
+            flex-direction: column
+
 
 
     .navbar
@@ -244,11 +290,13 @@ $shadow: #432818
             
 
     .dicetray
-        height: 90vh
-        margin: 32px 0
+        padding: 0
+
+        .tray-ttl
+            margin: 16px 0 0 0
 
     .cta-bttn
-        height: 40px
+        margin: 32px 0
         padding: 8px 24px
 
 
