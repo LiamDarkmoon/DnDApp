@@ -11,8 +11,11 @@ const diceOptions = [
   ]
 
 const DieSelect = ({ change, className }) => {
+
+
     return (
-        <Select options={ diceOptions } 
+        <Select
+            options={ diceOptions } 
             onChange={ change } 
             className={ className +' dice-select' } 
             defaultValue={ diceOptions[5] }

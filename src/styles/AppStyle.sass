@@ -12,19 +12,17 @@ $shadow: #432818
     flex-wrap: wrap
     align-items: center
     text-align: center
-    height: 100vh
+    min-height: 100vh
+    background-color: #ffefc660
 
 .pg
     width: 100%
     padding: 0 100px
 
-.lnd
-    background-color: #ffefc660
+    .pg-hl
+        margin: 48px 0
 
-    .lnd-hl
-        margin: 24px 0
-
-        .lnd-hl-tittle
+        .pg-hl-tittle
             font-family: "Noto Serif", serif
             font-weight: 600
             font-variation-settings: "wdth" 100
@@ -57,7 +55,7 @@ $shadow: #432818
 
             
 
-
+/** Form Style **/
 .form
     background-color: $secondary-accent
     padding: 48px 32px
@@ -187,7 +185,41 @@ $shadow: #432818
 
 .rot-d
     animation: 1.5s ease rotate
-    
+
+
+.card
+    border: 1px solid $shadow
+    color: $secondary-accent
+
+    .card-title
+        font-family: "Noto Serif", serif
+        font-weight: 500
+        font-variation-settings: "wdth" 100
+
+    .card-text
+        padding: 8px 0
+        font-style: italic
+        border-top: 1px solid $secondary-accent
+
+    .card-body
+        position: absolute
+        bottom: 0 
+
+.card::before
+    content: ''
+    height: 40%
+    width: 100%
+    position: absolute
+    bottom: 0
+    background-color: #432818b0
+    border-radius: 5px
+
+
+/** About Style **/
+.about-card
+    border-radius: 20px
+    padding: 48px 24px
+    background-color: #ffefc6c0
 
 #map
     background: url('../assets/maps/Map.jpg') center no-repeat

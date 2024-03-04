@@ -8,10 +8,10 @@ import DieSelect from './DieSelect';
 const DiceCounter = ( { die, diceNumber, mod, roll, clear, diceRoll, chooseMod, chooseDie, chooseDNumber } ) => {
 
     const [rolling, setRolling] = useState(false)
+    const [reset, setReset] = useState(false)
 
     const qnt = useRef(null);
     const cMod = useRef(null);
-    const rollbttn = useRef(null);
 
     const rolled = () => {
         setRolling(false)
@@ -20,6 +20,7 @@ const DiceCounter = ( { die, diceNumber, mod, roll, clear, diceRoll, chooseMod, 
     const handleClearButton = () => {
         clear()
         setRolling(false)
+        setReset(true)
         qnt.current.value = 1;
         cMod.current.value = 0;
     }
@@ -27,9 +28,12 @@ const DiceCounter = ( { die, diceNumber, mod, roll, clear, diceRoll, chooseMod, 
     const handleRollButton = () => {
         setRolling(true)
         diceRoll()
-        rollbttn.focus
     }
-    
+
+/*     const handleSelectDie = () => {
+        chooseDie()
+    } */
+
 
     //suming the result of the last roll
     const lastRoll = []
@@ -51,10 +55,7 @@ const DiceCounter = ( { die, diceNumber, mod, roll, clear, diceRoll, chooseMod, 
     })
 
 
-  /*  const handleSelectDie = () => {
-        qnt.current.value = 1;
-        chooseDie()
-    } */
+    
 
     return (
         <div className='die col-10 d-flex flex-column align-items-center' >
@@ -78,7 +79,7 @@ const DiceCounter = ( { die, diceNumber, mod, roll, clear, diceRoll, chooseMod, 
             <div className='col-12 row justify-content-evenly'>
                 <div className='col-sm-6 col-12 row ms-sm-1 my-1 p-0'>
                     <input className='l col-4' type='number' ref={ qnt } defaultValue={ 1 } min={ 1 } max={ 50 } onChange={ chooseDNumber }/>
-                    <DieSelect className='col-4 p-0' change={ chooseDie} />
+                    <DieSelect reset={ reset } className='col-4 p-0' change={ chooseDie} />
                     <input className='r col-4' type='number' ref={ cMod } defaultValue={ 0 } min={ -99 } max={ 99 } onChange={ chooseMod }/>
                 </div>
                 <div className='col-sm-6 col-10 row justify-content-evenly ms-sm-2 my-1 p-0'>

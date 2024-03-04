@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Bttn = ({ className, click, clean, text }) => {
     return (
-        <button className={ className + ' bttn' } type="submit" onClick={ click } onBlur={ clean }> { text } </button>
+        <button className={ className + ' bttn' } type="submit" onClick={ click } onMouseOver={ clean } > { text } </button>
     );
 };
 

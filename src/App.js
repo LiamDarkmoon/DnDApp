@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link, Routes, redirect, Navigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Routes, Navigate, } from 'react-router-dom';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '../src/styles/AppStyle.css';
-//import NavBar from './components/container/NavBar';
 
 
 import HomePage from './pages/home/HomePage';
@@ -26,18 +25,16 @@ function AppRoutingOne() {
   }, [])
 
   return (
-    <Router>
       <main className='App'>
         <Routes>
-          <Route exact path='/DnDatabase' element= <LandingPage/> />
-          <Route exact path='/' element= <HomePage/> />
-            <Route path='login' element= { logged ? <HomePage/> : <LoginPage/> } />
-            <Route path='profile' element={ logged ? <ProfilePage/> : <Navigate to='/login' replace/> } />
-            <Route path='about' element= <AboutPage/> />
-          <Route path='*' element= <NotFound/> />
+          <Route index element= { <LandingPage/> } />
+          <Route path='/home' element= { <HomePage/> } />
+          <Route path='/login' element= { logged ? <HomePage/> : <LoginPage/> } />
+          <Route path='/profile' element={ logged ? <ProfilePage/> : <Navigate to='/login' replace/> } />
+          <Route path='/about' element= { <AboutPage/> } />
+          <Route path='*' element= { <NotFound/> } />
         </Routes>
       </main>
-    </Router>
   );
 }
 
